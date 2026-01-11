@@ -1,68 +1,126 @@
-
+/* Basic styles */
 body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f0f2f5;
-    background-image: linear-gradient(45deg, #d2d6de 25%, transparent 25%), linear-gradient(-45deg, #d2d6de 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d2d6de 75%), linear-gradient(-45deg, transparent 75%, #d2d6de 75%);
-    background-size: 20px 20px;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Theme variables */
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --container-bg: #fff;
+    --button-bg: #007bff;
+    --button-text: #fff;
+    --lotto-number-bg: #e9ecef;
+    --lotto-number-text: #333;
+    --border-color: #ddd;
+}
+
+body.dark-mode {
+    --background-color: #2c2c2c;
+    --text-color: #f4f4f4;
+    --container-bg: #3c3c3c;
+    --button-bg: #0056b3;
+    --button-text: #f4f4f4;
+    --lotto-number-bg: #555;
+    --lotto-number-text: #f4f4f4;
+    --border-color: #444;
 }
 
 .container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: var(--container-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 500px;
-    width: 90%;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative; /* For positioning the toggle button */
 }
 
 h1 {
-    color: #333;
-    font-size: 2.5em;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
-#generate-btn {
-    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    color: white;
+button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border-radius: 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
 }
 
-#generate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+button:hover {
+    background-color: #0056b3;
 }
 
 .lotto-numbers-container {
-    margin-top: 30px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px;
 }
 
 .lotto-number {
-    background-color: #f0f2f5;
-    border: 2px solid #e0e0e0;
+    background-color: var(--lotto-number-bg);
+    color: var(--lotto-number-text);
+    border: 1px solid var(--border-color);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 20px;
     font-weight: bold;
-    margin: 10px;
-    color: #333;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--lotto-number-bg);
+}
+
+.theme-toggle .icon {
+    font-size: 18px;
+}
+
+.theme-toggle .text {
+    display: none; /* Hide text on smaller screens if needed, or always visible */
+}
+
+/* Responsive adjustments for the toggle button */
+@media (min-width: 600px) {
+    .theme-toggle .text {
+        display: inline; /* Show text on larger screens */
+    }
 }
