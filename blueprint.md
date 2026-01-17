@@ -8,6 +8,8 @@ This project is a simple web application that generates a set of 6 unique lotto 
 ### `index.html`
 - **Structure**: Basic HTML5 document with `head` and `body`.
 - **Title**: "Lotto Number Generator".
+- **Meta Tags**: Viewport and charset settings.
+- **Analytics**: Google Analytics (gtag.js) script in `<head>`.
 - **CSS Link**: Links `style.css` for styling.
 - **JavaScript Link**: Links `main.js` for functionality.
 - **Main Container (`.container`)**:
